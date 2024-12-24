@@ -1,0 +1,21 @@
+# docker container run -dt --name svc1 -p 8080:80 ravi2krishna/login-2435
+# docker build -t ravi2krishna/food -f food
+# docker container run -dt --name svc2 -p 8081:80 ravi2krishna/food
+# docker container run -dt --name svc3 -p 8082:80 -v /home/ubuntu/app-services-1/ecomm:/usr/share/nginx/html nginx
+
+services:
+  svc1:
+    image: ravi2krishna/login-2435
+    ports:
+      - "8080:80"
+  svc2:
+    build: ./food
+    image: ravi2krishna/food
+    ports:
+      - "8081:80"
+  svc3:
+    image: nginx
+    ports:
+      - "8082:80"
+    volumes:
+      - /home/ubuntu/app-services-1/ecomm:/usr/share/nginx/html
