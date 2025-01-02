@@ -2,3 +2,10 @@
 
 # we can use .yml or .yaml for Kubernetes Manifest Files(CODE)
 
+# Correct Representation Of Key Values 
+key: value
+
+# InCorrect Representation Of Key Values 
+key:value
+key :value
+
