@@ -14,3 +14,10 @@ name: ravi
 city: hyderabad
 state: telangana
 
+# Dictionary / Map - A dictionary is a data structure that holds a collection of 
+# data as a set of key-value pairs.
+
+trainer:
+  name: ravi
+  city: hyderabad
+  state: telangana
