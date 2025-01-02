@@ -21,3 +21,9 @@ trainer:
   name: ravi
   city: hyderabad
   state: telangana
+
+# List - Multiple items, List Of Courses
+courses:
+- AWS
+- DevOps
+- Azure  
