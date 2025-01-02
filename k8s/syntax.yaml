@@ -9,3 +9,8 @@ key: value
 key:value
 key :value
 
+# Simple Key Values
+name: ravi
+city: hyderabad
+state: telangana
+
