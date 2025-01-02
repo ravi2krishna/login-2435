@@ -1,0 +1,4 @@
+# - Comment, this line will be Ignored By Kubernetes
+
+# we can use .yml or .yaml for Kubernetes Manifest Files(CODE)
+
