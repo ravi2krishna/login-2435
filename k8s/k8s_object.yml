@@ -1,0 +1,5 @@
+# For kubernetes we have four top level items
+apiVersion:
+kind:
+metadata:
+spec:
