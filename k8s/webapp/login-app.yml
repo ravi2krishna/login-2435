@@ -1,0 +1,14 @@
+deployment:
+  name: login
+  replicas: 1
+  label: login
+  container_name: login
+  image: ravi2krishna/login-2435
+  port: 80
+
+service:
+  name: login-svc
+  type: NodePort
+  label: login
+  port: 80
+  nodeport: 30008

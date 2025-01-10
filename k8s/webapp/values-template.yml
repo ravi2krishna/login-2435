@@ -1,0 +1,14 @@
+deployment:
+  name: 
+  replicas:
+  label:
+  container_name:
+  image:
+  port:
+
+service:
+  name:
+  type:
+  label:
+  port:
+  nodeport:

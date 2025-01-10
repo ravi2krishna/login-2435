@@ -1,0 +1,14 @@
+deployment:
+  name: nginx
+  replicas: 1
+  label: nginx
+  container_name: nginx
+  image: nginx
+  port: 80
+
+service:
+  name: nginx-svc
+  type: NodePort
+  label: nginx
+  port: 80
+  nodeport: 30007
