@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: qa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template: # POD TEMPLATE
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: c1
+        image: ravi2krishna/login-2435
+        ports:
+        - containerPort: 80  
