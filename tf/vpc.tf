@@ -64,3 +64,11 @@ resource "aws_route_table_association" "lms-api-asc" {
   subnet_id      = aws_subnet.lms-api-sn.id
   route_table_id = aws_route_table.lms-public-rt.id
 }
+
+resource "aws_route_table" "lms-private-rt" {
+  vpc_id = aws_vpc.lms-vpc.id
+
+  tags = {
+    Name = "lms-private-rt"
+  }
+}
