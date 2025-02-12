@@ -72,3 +72,8 @@ resource "aws_route_table" "lms-private-rt" {
     Name = "lms-private-rt"
   }
 }
+
+resource "aws_route_table_association" "lms-db-asc" {
+  subnet_id      = aws_subnet.lms-db-sn.id
+  route_table_id = aws_route_table.lms-private-rt.id
+}
