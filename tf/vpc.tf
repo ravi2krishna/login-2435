@@ -144,3 +144,29 @@ resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-http" {
   ip_protocol       = "tcp"
   to_port           = 80
 }
+
+resource "aws_security_group" "lms-api-sg" {
+  name        = "lms-api-sg"
+  description = "Allow API Traffic"
+  vpc_id      = aws_vpc.lms-vpc.id
+
+  tags = {
+    Name = "lms-api-sg"
+  }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "lms-api-sg-ssh" {
+  security_group_id = aws_security_group.lms-api-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+resource "aws_vpc_security_group_ingress_rule" "lms-api-sg-http" {
+  security_group_id = aws_security_group.lms-api-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 8080
+  ip_protocol       = "tcp"
+  to_port           = 8080
+}
