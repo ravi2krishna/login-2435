@@ -24,3 +24,12 @@ resource "aws_subnet" "lms-api-sn" {
     Name = "lms-api-subnet"
   }
 }
+
+resource "aws_subnet" "lms-db-sn" {
+  vpc_id     = aws_vpc.lms-vpc.id
+  cidr_block = "10.0.3.0/24"
+  map_public_ip_on_launch = "false"
+  tags = {
+    Name = "lms-db-subnet"
+  }
+}
