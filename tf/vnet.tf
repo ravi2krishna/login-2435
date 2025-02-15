@@ -109,3 +109,17 @@ resource "azurerm_network_security_rule" "lms-api-nsg-ssh" {
   resource_group_name         = azurerm_resource_group.tf-rg.name
   network_security_group_name = azurerm_network_security_group.lms-api-nsg.name
 }
+
+resource "azurerm_network_security_rule" "lms-api-nsg-http" {
+  name                        = "lms-api-http"
+  priority                    = 101
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "8080"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.tf-rg.name
+  network_security_group_name = azurerm_network_security_group.lms-api-nsg.name
+}
