@@ -44,3 +44,14 @@ resource "azurerm_public_ip" "lms-web-pip" {
     environment = "lms"
   }
 }
+
+resource "azurerm_public_ip" "lms-api-pip" {
+  name                = "lms-api-public-ip"
+  resource_group_name = azurerm_resource_group.tf-rg.name
+  location            = azurerm_resource_group.tf-rg.location
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "lms"
+  }
+}
