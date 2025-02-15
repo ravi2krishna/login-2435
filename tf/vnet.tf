@@ -223,7 +223,7 @@ resource "azurerm_linux_virtual_machine" "lms-web-vm" {
   ]
 
   admin_ssh_key {
-    username   = "adminuser"
+    username   = "ubuntu"
     public_key = file("~/.ssh/id_rsa.pub")
   }
 
