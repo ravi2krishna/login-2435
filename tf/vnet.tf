@@ -157,3 +157,16 @@ resource "azurerm_network_security_rule" "lms-db-nsg-postgres" {
   resource_group_name         = azurerm_resource_group.tf-rg.name
   network_security_group_name = azurerm_network_security_group.lms-db-nsg.name
 }
+
+resource "azurerm_network_interface" "lms-web-nic" {
+  name                = "lms-web-nic"
+  location            = azurerm_resource_group.tf-rg.location
+  resource_group_name = azurerm_resource_group.tf-rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.lms-web-sn.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.lms-web-pip.id
+  }
+}
