@@ -78,7 +78,7 @@ resource "azurerm_network_security_rule" "lms-web-nsg-ssh" {
 
 resource "azurerm_network_security_rule" "lms-web-nsg-http" {
   name                        = "lms-web-http"
-  priority                    = 100
+  priority                    = 101
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
