@@ -146,7 +146,7 @@ resource "azurerm_network_security_rule" "lms-db-nsg-ssh" {
 
 resource "azurerm_network_security_rule" "lms-db-nsg-postgres" {
   name                        = "lms-db-postgres"
-  priority                    = 100
+  priority                    = 101
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
