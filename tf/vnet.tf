@@ -55,3 +55,10 @@ resource "azurerm_public_ip" "lms-api-pip" {
     environment = "lms"
   }
 }
+
+resource "azurerm_network_security_group" "lms-web-nsg" {
+  name                = "lms-web-firewall"
+  location            = azurerm_resource_group.tf-rg.location
+  resource_group_name = azurerm_resource_group.tf-rg.name
+}
+
