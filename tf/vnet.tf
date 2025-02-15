@@ -175,3 +175,21 @@ resource "azurerm_network_interface_security_group_association" "lms-web-nic-nsg
   network_interface_id      = azurerm_network_interface.lms-web-nic.id
   network_security_group_id = azurerm_network_security_group.lms-web-nsg.id
 }
+
+resource "azurerm_network_interface" "lms-api-nic" {
+  name                = "lms-api-nic"
+  location            = azurerm_resource_group.tf-rg.location
+  resource_group_name = azurerm_resource_group.tf-rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.lms-api-sn.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.lms-api-pip.id
+  }
+}
+
+resource "azurerm_network_interface_security_group_association" "lms-api-nic-nsg" {
+  network_interface_id      = azurerm_network_interface.lms-api-nic.id
+  network_security_group_id = azurerm_network_security_group.lms-api-nsg.id
+}
