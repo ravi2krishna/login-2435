@@ -89,3 +89,9 @@ resource "azurerm_network_security_rule" "lms-web-nsg-http" {
   resource_group_name         = azurerm_resource_group.tf-rg.name
   network_security_group_name = azurerm_network_security_group.lms-web-nsg.name
 }
+
+resource "azurerm_network_security_group" "lms-api-nsg" {
+  name                = "lms-api-firewall"
+  location            = azurerm_resource_group.tf-rg.location
+  resource_group_name = azurerm_resource_group.tf-rg.name
+}
