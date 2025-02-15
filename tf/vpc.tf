@@ -196,3 +196,17 @@ resource "aws_vpc_security_group_ingress_rule" "lms-db-sg-postgres" {
   ip_protocol       = "tcp"
   to_port           = 5432
 }
+
+# EC2 Instance
+resource "aws_instance" "lms-web-instance" {
+  ami           = "ami-06cff85354b67982b"
+  instance_type = "t2.micro"
+  key_name = "2502"
+  subnet_id = aws_subnet.lms-web-sn.id
+  vpc_security_group_ids = [aws_security_group.lms-web-sg.id]
+  user_data = file("script.sh")
+
+  tags = {
+    Name = "lms-web-server"
+  }
+}
