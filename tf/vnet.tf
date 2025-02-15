@@ -210,3 +210,32 @@ resource "azurerm_network_interface_security_group_association" "lms-db-nic-nsg"
   network_interface_id      = azurerm_network_interface.lms-db-nic.id
   network_security_group_id = azurerm_network_security_group.lms-db-nsg.id
 }
+
+resource "azurerm_linux_virtual_machine" "lms-web-vm" {
+  name                = "lms-web-vm"
+  resource_group_name = azurerm_resource_group.tf-rg.name
+  location            = azurerm_resource_group.tf-rg.location
+  size                = "Standard_F2"
+  admin_username      = "ubuntu"
+  custom_data = filebase64("script.sh")
+  network_interface_ids = [
+    azurerm_network_interface.lms-web-nic.id,
+  ]
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+}
